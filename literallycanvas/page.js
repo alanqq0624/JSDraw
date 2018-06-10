@@ -4,6 +4,16 @@ var strokeWidths;
 var colors;
 var setCurrentByName;
 var findByName;
+var Size = {
+    width: 200,
+    height: 200
+};
+var imageBounds = {
+    x: 0,
+    y: 0,
+    width: Size.width,
+    height: Size.height
+};
 // the only LC-specific thing we have to do
 var containerOne = document.getElementsByClassName('literally')[0];
 var showLC = function () {
@@ -14,8 +24,10 @@ var showLC = function () {
         strokeWidths: [1, 2, 3, 5, 10, 20, 30, 50],
         defaultStrokeWidth: 50,
         primaryColor: '#000',
-        secondaryColor: 'transparent'
+        secondaryColor: 'transparent',
+        imageSize: Size
     });
+    lc.setImageSize(200, 200);
     window.demoLC = lc;
 
     //set a snapshot after drawingchange, pan(move draw), and zoom(draw zoom in or out)
@@ -30,14 +42,8 @@ var showLC = function () {
     //set tooltab action event
     $("#open-image").click(function () {
         window.open(lc.getImage({
-            scale: 1,
-            margin: {
-                top: 10,
-                right: 10,
-                bottom: 10,
-                left: 10
-            }
-        }).toDataURL());//out put PNG/base-64, work on firefox
+            rect: imageBounds
+        }).toDataURL()); //out put PNG/base-64, work on firefox
     });
     $("#change-size").click(function () {
         lc.setImageSize(null, 200);
