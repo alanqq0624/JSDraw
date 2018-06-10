@@ -127,11 +127,13 @@ var showLC = function () {
         color: '#ff0000'
     }];
 
+    //set class.current for css
     setCurrentByName = function (ary, val) {
         ary.forEach(function (i) {
             $(i.el).toggleClass('current', (i.name == val));
         });
     };
+    //nmmmm......useless(?)
     findByName = function (ary, val) {
         var vals;
         vals = ary.filter(function (v) {
@@ -153,7 +155,8 @@ var showLC = function () {
             $('#tools-sizes').toggleClass('disabled', (t.name == 'text'));
         });
     });
-    //set initial state currrent(only look like, function is initial with last time(?))
+    //set initial state to first tool
+    lc.setTool(tools[0].tool);
     setCurrentByName(tools, tools[0].name);
 
     // Wire Stroke Widths
@@ -164,7 +167,9 @@ var showLC = function () {
             setCurrentByName(strokeWidths, sw.name);
         })
     })
+    //set initial state
     setCurrentByName(strokeWidths, strokeWidths[0].name);
+
     // Wire Colors
     colors.forEach(function (clr) {
         $(clr.el).click(function () {
@@ -172,6 +177,8 @@ var showLC = function () {
             setCurrentByName(colors, clr.name);
         })
     })
+    //set initial state to first color_black
+    lc.setColor('primary', colors[0].color)
     setCurrentByName(colors, colors[0].name);
 };
 
