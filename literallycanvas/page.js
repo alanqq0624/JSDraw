@@ -4,6 +4,7 @@ var strokeWidths;
 var colors;
 var setCurrentByName;
 var findByName;
+//size of canvas 
 var Size = {
     width: 200,
     height: 200
@@ -44,12 +45,6 @@ var showLC = function () {
         window.open(lc.getImage({
             rect: imageBounds
         }).toDataURL()); //out put PNG/base-64, work on firefox
-    });
-    $("#change-size").click(function () {
-        lc.setImageSize(null, 200);
-    });
-    $("#reset-size").click(function () {
-        lc.setImageSize(null, null);
     });
     $("#clear-lc").click(function () {
         lc.clear();
