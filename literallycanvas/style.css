@@ -1,0 +1,65 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0;
+    background-color: gray;
+    height: 2000px;
+}
+
+.fs-container {
+    width: 1000px;
+    margin: 50px;
+}
+
+.literally {
+    width: 100%;
+    height: 100%;
+}
+
+.literally img.background,
+.literally>canvas {
+    position: absolute;
+}
+
+.toolset {
+    margin: 1rem;
+}
+
+.tool {
+    background: hsla(199, 26%, 44%, 0.5);
+    padding: 0.25rem;
+    margin: 0.25rem;
+    border-radius: 0.25rem;
+    color: #000;
+    text-align: center;
+    text-decoration: none;
+    position: relative; // give after context later
+}
+
+.tool.current {
+    color: #fff;
+    background: hsla(199, 26%, 44%, 1);
+}
+
+.tool:hover {
+    text-decoration: underline;
+    background: hsla(199, 26%, 44%, 0.75);
+}
+
+.toolLabel {
+    font-size: 1.25rem;
+}
+
+#tools-sizes.disabled {
+    pointer-events: none;
+}
+
+#tools-sizes.disabled .tool:after {
+    content: ' ';
+    background: hsla(0, 100%, 100%, 0.75);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 0.25rem;
+}
