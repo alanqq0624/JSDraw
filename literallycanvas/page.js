@@ -6,21 +6,27 @@ var setCurrentByName;
 var findByName;
 // the only LC-specific thing we have to do
 var containerOne = document.getElementsByClassName('literally')[0];
-
 var showLC = function () {
     lc = LC.init(containerOne, {
+        //reload last time paint back, more detail in "save"
         snapshot: JSON.parse(localStorage.getItem('drawing')),
-        defaultStrokeWidth: 10,
+        //筆刷大小
         strokeWidths: [10, 20, 50],
+        defaultStrokeWidth: 10,
         secondaryColor: 'transparent'
     });
     window.demoLC = lc;
+
+    //set a snapshot after drawingchange, pan(move draw), and zoom(draw zoom in or out)
+    //To let you can keep your paint when reopening the page without lost your paint after last time you close tab 
     var save = function () {
         localStorage.setItem('drawing', JSON.stringify(lc.getSnapshot()));
     }
     lc.on('drawingChange', save);
     lc.on('pan', save);
     lc.on('zoom', save);
+
+    //set tooltab action event
     $("#open-image").click(function () {
         window.open(lc.getImage({
             scale: 1,
@@ -30,7 +36,7 @@ var showLC = function () {
                 bottom: 10,
                 left: 10
             }
-        }).toDataURL());
+        }).toDataURL());//out put PNG/base-64, work on firefox
     });
     $("#change-size").click(function () {
         lc.setImageSize(null, 200);
@@ -137,7 +143,7 @@ var showLC = function () {
             return vals[0];
     };
 
-    // Wire tools
+    // Wire tools to click event
     tools.forEach(function (t) {
         $(t.el).click(function () {
             var sw;
@@ -147,7 +153,9 @@ var showLC = function () {
             $('#tools-sizes').toggleClass('disabled', (t.name == 'text'));
         });
     });
+    //set initial state currrent(only look like, function is initial with last time(?))
     setCurrentByName(tools, tools[0].name);
+
     // Wire Stroke Widths
     // NOTE: This will not work until the stroke width PR is merged...
     strokeWidths.forEach(function (sw) {
@@ -176,6 +184,8 @@ $(document).ready(function () {
     });
     showLC();
 });
+
+//set clickevent of show or hide(disable) the whole draw
 $('#hide-lc').click(function () {
     if (lc) {
         lc.teardown();
