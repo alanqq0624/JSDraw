@@ -26,10 +26,12 @@ var showLC = function () {
         defaultStrokeWidth: 50,
         primaryColor: '#000',
         secondaryColor: 'transparent',
-        imageSize: Size
+        imageSize: Size //set default canvas size to "Size"
     });
+    //set canvas size to (200, 200)(px?)
+    //set twice because some explorer cant use the size in init()
     lc.setImageSize(200, 200);
-    window.demoLC = lc;
+    window.demoLC = lc; // ?
 
     //set a snapshot after drawingchange, pan(move draw), and zoom(draw zoom in or out)
     //To let you can keep your paint when reopening the page without lost your paint after last time you close tab 

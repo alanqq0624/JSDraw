@@ -8,7 +8,7 @@ try many to use many web drawer
 2. Draw on mobile (like android device or iphone)
 3. Save the picture (expert image to base64(?))
 
-## Collection and reference
+## Drawer Collection and reference
 
 ### I. zwibber
 
@@ -62,3 +62,33 @@ try many to use many web drawer
 
 1. [Home website](http://paperjs.org/)
 2. [similar Example](http://paperjs.org/examples/path-simplification/)
+
+## Color Picker collection
+
+### I. iro.js
+
+[Home website](https://rakujira.jp/projects/iro/)
+
+### II. Spectrum
+
+[Home website](https://bgrins.github.io/spectrum/)
+
+### III. tinycolorpicker
+
+[Home website](http://baijs.com/tinycolorpicker/)
+
+### IV. jscolor
+
+[Home website](http://jscolor.com/)
+
+### V. small-color-picker
+
+[Home website](http://antelle.net/small-color-picker/)
+
+### VI. ColorPick.js
+
+[Github](https://github.com/philzet/ColorPick.js)
+
+### VII. colorpickle
+
+[Home website](https://www.fakiirimedia.com/colorpickle/)
