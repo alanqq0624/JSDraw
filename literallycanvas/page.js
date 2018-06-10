@@ -11,8 +11,9 @@ var showLC = function () {
         //reload last time paint back, more detail in "save"
         snapshot: JSON.parse(localStorage.getItem('drawing')),
         //筆刷大小
-        strokeWidths: [10, 20, 50],
-        defaultStrokeWidth: 10,
+        strokeWidths: [1, 2, 3, 5, 10, 20, 30, 50],
+        defaultStrokeWidth: 50,
+        primaryColor: '#000',
         secondaryColor: 'transparent'
     });
     window.demoLC = lc;
@@ -100,16 +101,36 @@ var showLC = function () {
     }];
 
     strokeWidths = [{
-        name: 10,
+        name: 1,
         el: document.getElementById('sizeTool-1'),
+        size: 1
+    }, {
+        name: 2,
+        el: document.getElementById('sizeTool-2'),
+        size: 2
+    }, {
+        name: 3,
+        el: document.getElementById('sizeTool-3'),
+        size: 3
+    }, {
+        name: 5,
+        el: document.getElementById('sizeTool-5'),
+        size: 5
+    }, {
+        name: 10,
+        el: document.getElementById('sizeTool-10'),
         size: 10
     }, {
         name: 20,
-        el: document.getElementById('sizeTool-2'),
+        el: document.getElementById('sizeTool-20'),
         size: 20
     }, {
+        name: 30,
+        el: document.getElementById('sizeTool-30'),
+        size: 30
+    }, {
         name: 50,
-        el: document.getElementById('sizeTool-3'),
+        el: document.getElementById('sizeTool-50'),
         size: 50
     }];
 
@@ -168,6 +189,7 @@ var showLC = function () {
         })
     })
     //set initial state
+    lc.trigger('setStrokeWidth', strokeWidths[0].size);
     setCurrentByName(strokeWidths, strokeWidths[0].name);
 
     // Wire Colors
